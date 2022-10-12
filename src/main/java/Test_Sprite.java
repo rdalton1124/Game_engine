@@ -2,18 +2,19 @@ import javax.swing.*;
 import java.awt.*; 
 public class Test_Sprite {
     
-    private int x, y; 
-    private int dx, dy; 
-    private int ddx, ddy; 
-    private int width, height; 
+    protected int x, y; 
+    protected int dx, dy; 
+    protected int ddx, ddy; 
+    protected int width, height; 
     
-    private int boundAction; 
-    private int sceneHeight, sceneWidth; 
-    private boolean visible; 
-    private Color color; 
+    protected int boundAction; 
+    protected int sceneHeight, sceneWidth; 
+    protected boolean visible; 
+    protected Color color; 
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
     
-    private Test_Scene scn; 
+    
+    protected Test_Scene scn; 
     public Test_Sprite(Test_Scene scene) {
         scn = scene;  
         width = 50; 
@@ -34,6 +35,8 @@ public class Test_Sprite {
         scn = scene;
         this.x = x;  
         this.y = y; 
+        sceneHeight = scene.getHeight(); 
+        sceneWidth = scene.getWidth(); 
     }
     public Test_Sprite(Test_Scene scene, Image img, int width, int height) { 
         this.width = width; 
@@ -66,7 +69,7 @@ public class Test_Sprite {
         return y < 0; 
     }
     private boolean isBottomColliding() {
-        return (y + height) > sceneHeight - 26; 
+        return (y + height) > sceneHeight; 
     }
     private boolean isLeftColliding() {
         return x < 0; 
@@ -120,13 +123,13 @@ public class Test_Sprite {
             }
             case WRAP -> {
                 if(isTopColliding()) {
-                    y = sceneHeight - 1;
+                    y = sceneHeight - height;
                 }
                 else if(isBottomColliding()) {
                     y = 1;
                 }    
                 if(isLeftColliding()) {
-                    x = sceneWidth - 1;
+                    x = sceneWidth - width;
                 }
                 else if(isRightColliding()) {
                     x = 1;

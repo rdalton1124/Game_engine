@@ -7,9 +7,9 @@ public class Tst {
     public static void main(String [] args) {
         keepGoing = true; 
         Test_Scene scn = new Test_Scene(640, 480, Color.WHITE);
-      
+      /*
         Test_Sprite sprite = new Test_Sprite(scn);
-        sprite.setBoundAction(Test_Sprite.BOUNCE);
+        8sprite.setBoundAction(Test_Sprite.BOUNCE);
         sprite.setSpeedRTheta(15, -45);
         scn.addSprite(sprite);
         
@@ -17,6 +17,9 @@ public class Tst {
         blu.setBoundAction(Test_Sprite.WRAP);
         blu.setSpeedRTheta(10, 30); 
         scn.addSprite(blu);
+*/
+        Player_Sprite plyr = new Player_Sprite(scn); 
+        scn.addSprite(plyr); 
         scn.start(); 
         new Timer().schedule(new TimerTask() {
            public void run() {

@@ -27,6 +27,14 @@ public class Test_Sprite {
         x = (sceneWidth / 2) - (width / 2); 
         y = (sceneHeight / 2) - (height / 2); 
     }
+    public Test_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) {
+        this.width = width; 
+        this.height = height; 
+        this.color = color; 
+        scn = scene;
+        this.x = x;  
+        this.y = y; 
+    }
     public Test_Sprite(Test_Scene scene, Image img, int width, int height) { 
         this.width = width; 
         this.height = height;
@@ -58,22 +66,27 @@ public class Test_Sprite {
         return y < 0; 
     }
     private boolean isBottomColliding() {
-        return (y + height) > sceneHeight; 
+        return (y + height) > sceneHeight - 26; 
     }
     private boolean isLeftColliding() {
-        return x < width; 
+        return x < 0; 
     }
     private boolean isRightColliding() {
         return (x + width) > sceneWidth; 
     }
-    
-    
     
     public int getX() {return x;}
     public int getY() {return y;}
     public int getWidth() {return width;}
     public int getHeight() {return height;} 
     public Color getColor() {return color;} 
+    
+    public void addDX(int ndx) {
+        dx += ndx; 
+    }
+    public void addDY(int ndy)  {
+        dy += ndy; 
+    }
     
     public void show() {
         visible = true; 
@@ -107,15 +120,16 @@ public class Test_Sprite {
             }
             case WRAP -> {
                 if(isTopColliding()) {
-                    y = sceneHeight;
+                    y = sceneHeight - 1;
                 }
                 else if(isBottomColliding()) {
-                    y = 0;
-                }    if(isLeftColliding()) {
-                    x = sceneWidth;
+                    y = 1;
+                }    
+                if(isLeftColliding()) {
+                    x = sceneWidth - 1;
                 }
                 else if(isRightColliding()) {
-                    x = 0;
+                    x = 1;
                 }
             }
             case DIE -> {

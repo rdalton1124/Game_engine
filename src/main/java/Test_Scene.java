@@ -32,10 +32,10 @@ public class Test_Scene extends JFrame {
         
     }
     public void update() { 
+        canvas.repaint(); 
         for(int i = 0; i < sprites.size(); i++) {
             sprites.get(i).update(); 
         }
-        canvas.repaint(); 
     }
     public void addSprite(Test_Sprite sprite) {
         sprites.add(sprite); 
@@ -57,17 +57,18 @@ class Canvas extends JPanel {
     private Color sceneColor;
     private Test_Scene scn; 
     public Canvas(Test_Scene scn) {
+        super(true);
         this.scn = scn; 
     }
     
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(sceneColor); 
-        g.fillRect(0, 0, sceneWidth, sceneHeight);
+        g.clearRect(0, 0, scn.getWidth(), scn.getHeight());
         System.out.println("sprites = " + scn.sprites.size());
         for (int i = 0; i < scn.sprites.size(); i++) {
             scn.sprites.get(i).showStatus();
-            g.setColor(Color.BLACK); 
+            g.setColor(scn.sprites.get(i).getColor()); 
             g.fillRect(scn.sprites.get(i).getX(), scn.sprites.get(i).getY(), 
                     scn.sprites.get(i).getWidth(), scn.sprites.get(i).getHeight()); 
         }

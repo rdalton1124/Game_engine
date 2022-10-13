@@ -11,7 +11,8 @@ public class Player_Sprite extends Test_Sprite implements KeyListener{
         dy = 0; 
         ddx = 0; 
         ddy = 0; 
-    }    @Override
+    }   
+    @Override
     public void keyPressed(KeyEvent e) { 
         if(e.getKeyCode() == KeyEvent.VK_W) {
             dy -= 1; 

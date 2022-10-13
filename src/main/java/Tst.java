@@ -18,8 +18,13 @@ public class Tst {
         blu.setSpeedRTheta(10, 30); 
         scn.addSprite(blu);
 */
+      
+        Test_Sprite test_img = new Test_Sprite(scn, "src/main/java/soccer.png", 50, 50); 
+        test_img.setBoundAction(Test_Sprite.BOUNCE);
+        test_img.setSpeedRTheta(10, -45); 
         Player_Sprite plyr = new Player_Sprite(scn); 
         scn.addSprite(plyr); 
+        scn.addSprite(test_img);
         scn.start(); 
         new Timer().schedule(new TimerTask() {
            public void run() {

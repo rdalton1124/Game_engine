@@ -1,15 +1,20 @@
 import javax.swing.*; 
 import java.awt.*; 
+import java.awt.image.*; 
+import java.io.*; 
+import javax.imageio.*; 
+
 public class Test_Sprite {
     
     protected int x, y; 
     protected int dx, dy; 
     protected int ddx, ddy; 
     protected int width, height; 
-    
     protected int boundAction; 
     protected int sceneHeight, sceneWidth; 
     protected boolean visible; 
+    protected boolean hasImage; 
+    protected Image img; 
     protected Color color; 
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
     
@@ -38,12 +43,20 @@ public class Test_Sprite {
         sceneHeight = scene.getHeight(); 
         sceneWidth = scene.getWidth(); 
     }
-    public Test_Sprite(Test_Scene scene, Image img, int width, int height) { 
+    public Test_Sprite(Test_Scene scene, String imgPath, int width, int height) { 
         this.width = width; 
         this.height = height;
-        
+       
         sceneHeight = scene.getHeight(); 
         sceneWidth = scene.getWidth(); 
+        
+        try {
+           BufferedImage bi  = ImageIO.read(new File(imgPath)); 
+            img = bi.getScaledInstance(width, height, Image.SCALE_SMOOTH); 
+        }
+        catch(IOException e) {
+            this.color = Color.RED; 
+        }
     }
     
     public void update() {
@@ -53,7 +66,12 @@ public class Test_Sprite {
         x += dx;
         y += dy; 
     }
-    
+    public Image getImage() {
+        return img; 
+    }
+    public boolean hasImage() { 
+        return !(img == null); 
+    }
     public void setBoundAction(int ba) {
         if(ba >= 1 && ba <= 6) 
             boundAction = ba; 

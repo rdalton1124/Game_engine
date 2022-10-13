@@ -7,6 +7,7 @@
 
     Next time you're in the market for a Test_Sprite, consider picking up a Test_Sprite_Junior
 */
+
 public class Test_Sprite_Junior extends Test_Sprite {
     private int xBoundAction, yBoundAction; 
     

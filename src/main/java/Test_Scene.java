@@ -51,6 +51,9 @@ public class Test_Scene extends JFrame {
     public Color getBgColor() { 
         return bg; 
     }
+    public void setBgColor(Color c) {
+        bg = c; 
+    }
 }
 class Canvas extends JPanel { 
     private int sceneWidth, sceneHeight; 
@@ -63,8 +66,8 @@ class Canvas extends JPanel {
     
     @Override
     public void paintComponent(Graphics g) {
-        g.setColor(sceneColor); 
-        g.clearRect(0, 0, scn.getWidth(), scn.getHeight());
+        g.setColor(scn.getBgColor()); 
+        g.fillRect(0, 0, scn.getWidth(), scn.getHeight());
         System.out.println("sprites = " + scn.sprites.size());
         for (int i = 0; i < scn.sprites.size(); i++) {
             scn.sprites.get(i).showStatus();

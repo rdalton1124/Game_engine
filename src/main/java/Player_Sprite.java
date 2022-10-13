@@ -11,7 +11,13 @@ public class Player_Sprite extends Test_Sprite implements KeyListener{
         dy = 0; 
         ddx = 0; 
         ddy = 0; 
-    }   
+    }
+    public Player_Sprite(Test_Scene scene, String imgPath, int width, int height) {
+        super(scene, imgPath, width, height); 
+        x = (sceneWidth / 2) - (width / 2); 
+        y = (sceneHeight / 2) - (height / 2); 
+    }
+    
     @Override
     public void keyPressed(KeyEvent e) { 
         if(e.getKeyCode() == KeyEvent.VK_W) {

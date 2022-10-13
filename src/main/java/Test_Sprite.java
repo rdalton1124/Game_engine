@@ -10,12 +10,15 @@ public class Test_Sprite {
     protected int dx, dy; 
     protected int ddx, ddy; 
     protected int width, height; 
+    
     protected int boundAction; 
     protected int sceneHeight, sceneWidth; 
     protected boolean visible; 
+    
     protected boolean hasImage; 
     protected Image img; 
     protected Color color; 
+    
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
     
     
@@ -66,22 +69,36 @@ public class Test_Sprite {
         x += dx;
         y += dy; 
     }
+    
     public Image getImage() {
         return img; 
     }
     public boolean hasImage() { 
         return !(img == null); 
     }
+    
     public void setBoundAction(int ba) {
         if(ba >= 1 && ba <= 6) 
             boundAction = ba; 
     }
+    public boolean collidesWith(Test_Sprite other)  {
+        if(x > other.x + other.width || //my left side is to your right
+                x + width < other.x) //my right side is to your left
+            return false; 
+        else if (y > other.y + height || //my top side is below your bottom
+                y + height < other.y)  //my bottom side is above your top
+            return false;
+        else
+            return true; 
+        
+    } 
     public void showStatus() { 
         System.out.println("My collision box is " + width + " x " + height); 
         System.out.println("I am at (" + x + ", " + y + ")");
         System.out.println("I am moving at " + dx + " u/f horizontally and " + dy + "u/f vertically" + "\n\n");
         
     }
+    
     //checks to see if the sprite is colliding with any of the bounds of the scene. 
     private boolean isTopColliding(){
         return y < 0; 

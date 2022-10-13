@@ -1,11 +1,10 @@
-import javax.swing.*; 
 import java.awt.*; 
 import java.awt.image.*; 
 import java.io.*; 
 import javax.imageio.*; 
+import javax.swing.*; 
 
-public class Test_Sprite {
-    
+public class Test_Sprite extends JComponent{
     protected int x, y; 
     protected int dx, dy; 
     protected int ddx, ddy; 
@@ -20,9 +19,9 @@ public class Test_Sprite {
     protected Color color; 
     
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
-    
-    
+        
     protected Test_Scene scn; 
+    
     public Test_Sprite(Test_Scene scene) {
         scn = scene;  
         width = 50; 

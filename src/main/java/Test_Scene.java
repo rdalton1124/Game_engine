@@ -68,9 +68,9 @@ class Canvas extends JPanel {
     public void paintComponent(Graphics g) {
         g.setColor(scn.getBgColor()); 
         g.fillRect(0, 0, scn.getWidth(), scn.getHeight());
-        System.out.println("sprites = " + scn.sprites.size());
+        //System.out.println("sprites = " + scn.sprites.size());
         for (int i = 0; i < scn.sprites.size(); i++) {
-            scn.sprites.get(i).showStatus();
+            //scn.sprites.get(i).showStatus();
             if(scn.sprites.get(i).hasImage()) {
                g.drawImage(scn.sprites.get(i).getImage(), scn.sprites.get(i).getX(), scn.sprites.get(i).getY(), null); 
             } 

@@ -1,3 +1,5 @@
+package default_elements;
+
 import javax.swing.*; 
 import java.awt.*; 
 import java.util.*; 
@@ -6,6 +8,8 @@ public class Test_Scene extends JFrame {
     private Canvas canvas; 
     private int width, height; 
     private Color bg; 
+    
+    private String title = ""; 
     public ArrayList<Test_Sprite> sprites; 
     
     Test_Scene(Test_Scene scene) {
@@ -19,10 +23,17 @@ public class Test_Scene extends JFrame {
         this.width = width;
         this.height = height; 
         this.sprites = new ArrayList<Test_Sprite>(); 
+    } 
+    public void setName(String t) {
+        title = t; 
     }
-    
     public void start() { 
         canvas = new Canvas(this); 
+        if(title == "")
+            this.setTitle("My Game");
+        else
+            this.setTitle(title); 
+        
         this.add(canvas, BorderLayout.CENTER); 
         this.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
         this.setSize(width, height); 

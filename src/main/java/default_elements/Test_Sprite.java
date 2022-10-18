@@ -1,3 +1,5 @@
+package default_elements;
+
 import java.awt.*; 
 import java.awt.image.*; 
 import java.io.*; 
@@ -19,44 +21,40 @@ public class Test_Sprite extends JComponent{
     protected Color color; 
     
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
-        
-    protected Test_Scene scn; 
     
     public Test_Sprite(Test_Scene scene) {
-        scn = scene;  
-        width = 50; 
-        height = 50; 
-        color = Color.RED; 
-      
-        sceneHeight = scene.getHeight();
-        sceneWidth = scene.getWidth(); 
-        
-        //set to middle of screen by default
-        x = (sceneWidth / 2) - (width / 2); 
-        y = (sceneHeight / 2) - (height / 2); 
+        //set everything to a default value 
+        this(scene, Color.RED, 50, 50, ((scene.getWidth() / 2) - 25), ((scene.getWidth() / 2) - 25)); 
     }
-    public Test_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) {
+    public Test_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) { 
         this.width = width; 
         this.height = height; 
         this.color = color; 
-        scn = scene;
-        this.x = x;  
-        this.y = y; 
+        
+        
         sceneHeight = scene.getHeight(); 
         sceneWidth = scene.getWidth(); 
+   
+        this.x = x;  
+        this.y = y; 
     }
     public Test_Sprite(Test_Scene scene, String imgPath, int width, int height) { 
+        this(scene, imgPath, width, height, 0, 0); //set to top left corner. 
+    }
+    public Test_Sprite(Test_Scene scene, String imgPath, int width, int height, int x, int y) {
         this.width = width; 
-        this.height = height;
-       
+        this.height = height; 
+        this.x = x; 
+        this.y = y;
+        
         sceneHeight = scene.getHeight(); 
         sceneWidth = scene.getWidth(); 
         
         try {
-           BufferedImage bi  = ImageIO.read(new File(imgPath)); 
-            img = bi.getScaledInstance(width, height, Image.SCALE_SMOOTH); 
+            BufferedImage bi = ImageIO.read(new File(imgPath)); 
+            img = bi.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         }
-        catch(IOException e) {
+        catch(IOException e) { 
             this.color = Color.RED; 
         }
     }
@@ -99,16 +97,17 @@ public class Test_Sprite extends JComponent{
     }
     
     //checks to see if the sprite is colliding with any of the bounds of the scene. 
-    private boolean isTopColliding(){
+    protected boolean isTopColliding(){
         return y < 0; 
     }
-    private boolean isBottomColliding() {
-        return (y + height) > sceneHeight; 
+    protected boolean isBottomColliding() {
+        return (y + height) > sceneHeight - 26;
+        //26 is the height of the title bar in the java window
     }
-    private boolean isLeftColliding() {
+    protected boolean isLeftColliding() {
         return x < 0; 
     }
-    private boolean isRightColliding() {
+    protected boolean isRightColliding() {
         return (x + width) > sceneWidth; 
     }
     

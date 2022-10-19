@@ -3,7 +3,7 @@ package default_elements;
 import java.awt.event.*; 
 import java.awt.*; 
 
-public class Player_Sprite extends Test_Sprite implements KeyListener{
+public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
     
     //this method works well enough but as a side effect, you can
     //go significantly faster moving diagonally. Fix later. 

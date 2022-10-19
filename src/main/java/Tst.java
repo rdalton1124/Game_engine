@@ -14,21 +14,19 @@ public class Tst {
         
         Player_Sprite plyr = new Player_Sprite(scn, "img/baseball.png", 50, 50); 
         plyr.setBoundAction(Test_Sprite.WRAP);
+        plyr.setSound("sounds/bump.wav", Test_Sprite.BOUNCE); 
+        plyr.setSound("sounds/wrap.wav", Test_Sprite.WRAP);
         
-        Test_Sprite boring = new Test_Sprite(scn); 
-        Test_Sprite sk8 = new Test_Sprite(scn, "img/sk9.png", 68, 17); 
         scn.setName("Test Game"); 
         scn.addSprite(plyr); 
         scn.addSprite(test_img);
-        scn.addSprite(boring); 
-        scn.addSprite(sk8); 
         scn.addKeyListener(plyr);
         scn.start(); 
         
         new Timer().schedule(new TimerTask() {
            public void run() {
                scn.update(); 
-               if(sk8.collidesWith(plyr))
+               if(test_img.collidesWith(plyr))
                    scn.setBgColor(Color.RED);
                else
                    scn.setBgColor(Color.GRAY); 

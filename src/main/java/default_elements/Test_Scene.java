@@ -70,6 +70,7 @@ class Canvas extends JPanel {
     private int sceneWidth, sceneHeight; 
     private Color sceneColor;
     private Test_Scene scn; 
+    
     public Canvas(Test_Scene scn) {
         super(true);
         this.scn = scn; 

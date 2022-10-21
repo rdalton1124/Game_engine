@@ -1,3 +1,7 @@
+/**************************************
+DO NOT USE THIS. IT'S ARCHIAC AND YOU CAN JUST
+* SET A PLAYER_SPRITE TO IJKL. 
+**************************************/
 package default_elements;
 
 import java.awt.*; 

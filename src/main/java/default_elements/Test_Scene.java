@@ -23,13 +23,13 @@ public class Test_Scene extends JFrame {
         this.width = width;
         this.height = height; 
         this.sprites = new ArrayList<Test_Sprite>(); 
-    } 
-    public void setName(String t) {
-        title = t; 
     }
+    
+   
+    
     public void start() { 
         canvas = new Canvas(this); 
-        if(title == "")
+        if(title.equals(""))
             this.setTitle("My Game");
         else
             this.setTitle(title); 
@@ -48,24 +48,22 @@ public class Test_Scene extends JFrame {
             sprites.get(i).update(); 
         }
     }
+    
+    
     public void addSprite(Test_Sprite sprite) {
         sprites.add(sprite); 
     }
+    public void setName(String t) {
+        title = t; 
+    }
     
    
-    public int getHeight() {
-        return height;
-    }
-    public int getWidth() {
-        return width; 
-    }
-    public Color getBgColor() { 
-        return bg; 
-    }
-    public void setBgColor(Color c) {
-        bg = c; 
-    }
+    public int getHeight() {return height;}
+    public int getWidth() {return width;}
+    public Color getBgColor() {return bg;}
+    public void setBgColor(Color c) {bg = c;}
 }
+
 class Canvas extends JPanel { 
     private int sceneWidth, sceneHeight; 
     private Color sceneColor;

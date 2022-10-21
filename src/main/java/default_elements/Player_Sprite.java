@@ -2,12 +2,16 @@ package default_elements;
 
 import java.awt.event.*; 
 import java.awt.*; 
-
+import java.util.*; 
 public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
     
     //this method works well enough but as a side effect, you can
     //go significantly faster moving diagonally. Fix later. 
-    final int maxDX = 15, maxDY = 15; 
+    protected final int maxDX = 15, maxDY = 15; 
+    protected ArrayList<Integer> keysDown = new ArrayList<Integer>(); 
+    
+    protected int up, left, down, right; 
+    public final static int WASD = 1, IJKL = 2; 
     
     public Player_Sprite(Test_Scene scene) {
         super(scene);
@@ -35,33 +39,48 @@ public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
         ddx = 0; 
         ddy = 0; 
     }
-    
+    public void setControls(int cnt) {
+        if(cnt == WASD)
+            setControls(KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D); 
+        else if(cnt == IJKL) 
+            setControls(KeyEvent.VK_I, KeyEvent.VK_J, KeyEvent.VK_K, KeyEvent.VK_L); 
+    }
+    public void setControls(int up, int left, int down, int right) { 
+        this.up = up; 
+        this.left = left; 
+        this.down = down; 
+        this.right = right; 
+    }
     @Override
-    public void keyPressed(KeyEvent e) { 
-        if(e.getKeyCode() == KeyEvent.VK_W) {
-            dy -= 5;
-            if(dy < -maxDY) 
-                dy = -maxDY;
-            System.out.println("W pressed");
+    public void update() {
+        if(keysDown.contains(up)) { 
+            dy -= 5; 
+            if (dy < -maxDY)
+                dy = -maxDY; 
         }
-        if(e.getKeyCode() == KeyEvent.VK_A) {
-            dx -= 5;
+        if(keysDown.contains(left)) {
+            dx -= 5; 
             if(dx < -maxDX)
                 dx = -maxDX; 
-            System.out.println("A pressed");
         }
-        if(e.getKeyCode() == KeyEvent.VK_S) {
+        if(keysDown.contains(down)) {
             dy += 5; 
             if(dy > maxDY)
                 dy = maxDY; 
-            System.out.println("S pressed");
         }
-        if(e.getKeyCode() == KeyEvent.VK_D) {
+        if(keysDown.contains(right)) {
             dx += 5; 
-            if(dx > maxDX) 
-                dx = maxDX;
-            System.out.println("D pressed");
+            if (dx > maxDX)
+                dx = maxDX; 
         }
+        
+        super.update();  
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) { 
+       if (!keysDown.contains(e.getKeyCode()))
+           keysDown.add(e.getKeyCode()); 
     }
     @Override 
     public void keyTyped(KeyEvent e) {
@@ -71,22 +90,6 @@ public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
     //fix this later 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_W) {
-            dy = 0;
-            System.out.println("W released");
-        }
-        if(e.getKeyCode() == KeyEvent.VK_A) {
-            dx = 0; 
-            System.out.println("A released");
-        }
-        if(e.getKeyCode() == KeyEvent.VK_S) {
-            dy = 0;
-            System.out.println("S released");
-        }
-        if(e.getKeyCode() == KeyEvent.VK_D) {
-            dx = 0; 
-            System.out.println("D released");
-        }
-        
+        keysDown.remove((Integer) e.getKeyCode()); 
     }
 }

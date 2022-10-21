@@ -78,6 +78,7 @@ public class Test_Sprite extends JComponent{
         if(ba >= 1 && ba <= 6) 
             boundAction = ba; 
     }
+    
     public boolean collidesWith(Test_Sprite other)  {
         if(x > other.x + other.width || //my left side is to your right
                 x + width < other.x) //my right side is to your left
@@ -89,13 +90,13 @@ public class Test_Sprite extends JComponent{
             return true; 
         
     } 
+    
     public void showStatus() { 
         System.out.println("My collision box is " + width + " x " + height); 
         System.out.println("I am at (" + x + ", " + y + ")");
         System.out.println("I am moving at " + dx + " u/f horizontally and " + dy + "u/f vertically" + "\n\n");
-        
     }
-    
+     
     //checks to see if the sprite is colliding with any of the bounds of the scene. 
     protected boolean isTopColliding(){
         return y < 0; 
@@ -117,19 +118,11 @@ public class Test_Sprite extends JComponent{
     public int getHeight() {return height;} 
     public Color getColor() {return color;} 
     
-    public void addDX(int ndx) {
-        dx += ndx; 
-    }
-    public void addDY(int ndy)  {
-        dy += ndy; 
-    }
+    public void addDX(int ndx) {dx += ndx;}
+    public void addDY(int ndy)  {dy += ndy;}
     
-    public void show() {
-        visible = true; 
-    }
-    public void hide() {
-        visible = false; 
-    }
+    public void show() {visible = true;}
+    public void hide() {visible = false;}
     
     
     public void setSpeedRTheta(int velocity, int angle) {
@@ -157,6 +150,7 @@ public class Test_Sprite extends JComponent{
             case WRAP -> {
                 if(isTopColliding()) {
                     y = sceneHeight - height;
+                    y -= 50; 
                 }
                 else if(isBottomColliding()) {
                     y = 1;

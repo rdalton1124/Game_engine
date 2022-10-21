@@ -5,7 +5,6 @@ import java.io.*;
 import javax.sound.sampled.*; 
 import javax.sound.sampled.spi.*; 
 
-
 /*
     The proud prince of the Test_Sprite dynasty, Test_Sprite_Junior includes
     all of Test_Sprite's features and MORE!
@@ -20,6 +19,7 @@ public class Test_Sprite_Junior extends Test_Sprite {
     private int xBoundAction, yBoundAction; 
     protected Clip bounce, wrap, die; 
     protected AudioInputStream ais; 
+    
     public Test_Sprite_Junior(Test_Scene scene) {
         super(scene);
     }
@@ -29,6 +29,7 @@ public class Test_Sprite_Junior extends Test_Sprite {
     public Test_Sprite_Junior(Test_Scene scene, String imgPath, int width, int height) {
         super(scene, imgPath, width, height); 
     }
+    
     public void setSound(String sndPath, int snd) {
         try {
             ais = AudioSystem.getAudioInputStream(new File(sndPath)); 
@@ -101,7 +102,7 @@ public class Test_Sprite_Junior extends Test_Sprite {
                 case WRAP -> {
                     wrap.loop(1);
                     if(isTopColliding())
-                        y = sceneHeight - height;
+                        y = sceneHeight - height - 26;
                     else
                         y = 1;
                 }

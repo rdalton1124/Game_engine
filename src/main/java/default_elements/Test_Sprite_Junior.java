@@ -16,7 +16,7 @@ import javax.sound.sampled.spi.*;
 */
 
 public class Test_Sprite_Junior extends Test_Sprite {
-    private int xBoundAction, yBoundAction; 
+    protected int xBoundAction, yBoundAction; 
     protected Clip bounce, wrap, die; 
     protected AudioInputStream ais; 
     
@@ -89,6 +89,11 @@ public class Test_Sprite_Junior extends Test_Sprite {
                     ddx = 0;
                     ddy = 0;
                 }
+                case RESPAWN -> {
+                    x = rand.nextInt(sceneWidth - width); 
+                    y = rand.nextInt(sceneHeight - height); 
+                    setSpeedRTheta(10, rand.nextInt(360)); 
+                }
                 default -> {
                 } 
             }
@@ -114,6 +119,11 @@ public class Test_Sprite_Junior extends Test_Sprite {
                     dy = 0;
                     ddx = 0;
                     ddy = 0;
+                }
+                case RESPAWN -> {
+                    x = rand.nextInt(sceneWidth - width); 
+                    y = rand.nextInt(sceneHeight - height);
+                    setSpeedRTheta(10, rand.nextInt(360)); 
                 }
                 default -> {
                 } 

@@ -5,6 +5,7 @@ import java.awt.image.*;
 import java.io.*; 
 import javax.imageio.*; 
 import javax.swing.*; 
+import java.util.*; 
 
 public class Test_Sprite extends JComponent{
     protected int x, y; 
@@ -16,11 +17,12 @@ public class Test_Sprite extends JComponent{
     protected int sceneHeight, sceneWidth; 
     protected boolean visible; 
     
-    protected boolean hasImage; 
     protected Image img; 
     protected Color color; 
     
-    public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6; 
+    protected Random rand = new Random(); 
+    
+    public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6, RESPAWN = 7; 
     
     public Test_Sprite(Test_Scene scene) {
         //set everything to a default value 
@@ -75,7 +77,7 @@ public class Test_Sprite extends JComponent{
     }
     
     public void setBoundAction(int ba) {
-        if(ba >= 1 && ba <= 6) 
+        if(ba >= 1 && ba <= 7) 
             boundAction = ba; 
     }
     
@@ -181,6 +183,10 @@ public class Test_Sprite extends JComponent{
                     dx = 0;
                     dy = 0;
                 }
+            }
+            case RESPAWN -> {
+                x = rand.nextInt(sceneWidth - width); 
+                y = rand.nextInt(sceneHeight - height); 
             }
             default -> {
             }

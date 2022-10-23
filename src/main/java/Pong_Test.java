@@ -16,11 +16,17 @@ public class Pong_Test {
         plyr1.setControls(Player_Sprite.WASD);
         plyr2.setControls(Player_Sprite.IJKL);
         
+        Pong_Ball balls = new Pong_Ball(scn, Color.WHITE, 20, 20, 300, 220); 
+        balls.setSound("sounds/bump.wav", Test_Sprite.BOUNCE); 
+        balls.setSpeedRTheta(10, 45); 
+        
         scn.setName("Pong"); 
         scn.addSprite(plyr1);
         scn.addSprite(plyr2); 
         scn.addKeyListener(plyr1);
         scn.addKeyListener(plyr2); 
+        
+        scn.addSprite(balls); 
         
         scn.start(); 
         
@@ -28,6 +34,8 @@ public class Pong_Test {
            @Override
             public void run() {
                scn.update(); 
+               if(balls.collidesWith(plyr1) || balls.collidesWith(plyr2))
+                   balls.bounce(); 
            } 
         }, 0, 30);
         

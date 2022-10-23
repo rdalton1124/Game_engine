@@ -91,5 +91,17 @@ public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         keysDown.remove((Integer) e.getKeyCode()); 
+        if(e.getKeyCode() == up) {
+            dy = 0; 
+        }
+        if(e.getKeyCode() == left) {
+            dx = 0; 
+        }
+        if(e.getKeyCode() == down) {
+            dy = 0; 
+        }
+        if(e.getKeyCode() == right) {
+            dx = 0; 
+        }
     }
 }

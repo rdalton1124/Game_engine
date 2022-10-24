@@ -17,7 +17,7 @@ import javax.sound.sampled.spi.*;
 
 public class Test_Sprite_Junior extends Test_Sprite {
     protected int xBoundAction, yBoundAction; 
-    protected Clip bounce, wrap, die; 
+    protected Clip bounce, wrap, die, slide, stop, respawn;  
     protected AudioInputStream ais; 
     
     public Test_Sprite_Junior(Test_Scene scene) {
@@ -33,18 +33,34 @@ public class Test_Sprite_Junior extends Test_Sprite {
     public void setSound(String sndPath, int snd) {
         try {
             ais = AudioSystem.getAudioInputStream(new File(sndPath)); 
-            if(snd == BOUNCE) {
-                bounce = AudioSystem.getClip(); 
-                bounce.open(ais);
+            switch (snd) {
+                case BOUNCE:
+                    bounce = AudioSystem.getClip();
+                    bounce.open(ais);
+                    break;
+                case WRAP:
+                    wrap = AudioSystem.getClip();
+                    wrap.open(ais);
+                    break;
+                case DIE:
+                    die = AudioSystem.getClip();
+                    die.open(ais);
+                    break;
+                case SLIDE:
+                    slide = AudioSystem.getClip();
+                    slide.open(ais);
+                    break;
+                case STOP:
+                    stop = AudioSystem.getClip();
+                    stop.open(ais);
+                    break;
+                case RESPAWN:
+                    respawn = AudioSystem.getClip();
+                    respawn.open(ais);
+                    break;
+                default:
+                    break;
             }
-            else if(snd == WRAP) {
-                wrap = AudioSystem.getClip(); 
-                wrap.open(ais);
-            }
-            else if(snd == DIE) {
-                die = AudioSystem.getClip(); 
-                die.open(ais); 
-            } 
             
         }
         catch(Exception e) {
@@ -74,25 +90,35 @@ public class Test_Sprite_Junior extends Test_Sprite {
                     bounce.loop(1);
                 }
                 case WRAP -> {
-                    wrap.loop(1);
                     if(isLeftColliding()) 
                         x = sceneWidth - width;
                     else
                         x = 1;
+                    
+                    wrap.loop(1); 
                 }
                 case DIE -> {
+                    die.loop(1);
                 }
-                case SLIDE -> dy = 0;
+                case SLIDE -> {
+                    dy = 0; 
+                    
+                    slide.loop(1);
+                }
                 case STOP -> {
                     dx = 0;
                     dy = 0;
                     ddx = 0;
                     ddy = 0;
+                    
+                    stop.loop(1);
                 }
                 case RESPAWN -> {
                     x = rand.nextInt(sceneWidth - width); 
                     y = rand.nextInt(sceneHeight - height); 
-                    setSpeedRTheta(10, rand.nextInt(360)); 
+                    setSpeedRTheta((int) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)), rand.nextInt(360)); 
+                    
+                    respawn.loop(1); 
                 }
                 default -> {
                 } 
@@ -105,25 +131,35 @@ public class Test_Sprite_Junior extends Test_Sprite {
                     bounce.loop(1); 
                 }
                 case WRAP -> {
-                    wrap.loop(1);
                     if(isTopColliding())
                         y = sceneHeight - height - 26;
                     else
                         y = 1;
+                    
+                    wrap.loop(1); 
                 }
                 case DIE -> {
+                    die.loop(1);
                 }
-                case SLIDE -> dx = 0;
+                case SLIDE -> {
+                    dx = 0; 
+                    
+                    slide.loop(1); 
+                }
                 case STOP -> {
                     dx = 0; 
                     dy = 0;
                     ddx = 0;
                     ddy = 0;
+                    
+                    stop.loop(1);
                 }
                 case RESPAWN -> {
                     x = rand.nextInt(sceneWidth - width); 
                     y = rand.nextInt(sceneHeight - height);
-                    setSpeedRTheta(10, rand.nextInt(360)); 
+                    setSpeedRTheta((int) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)), rand.nextInt(360));
+                    
+                    respawn.loop(1); 
                 }
                 default -> {
                 } 

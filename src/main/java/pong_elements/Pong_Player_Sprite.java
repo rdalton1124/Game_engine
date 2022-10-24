@@ -30,10 +30,14 @@ public class Pong_Player_Sprite extends Player_Sprite{
     }
     @Override 
     public void checkBoundaries(){ 
-        if(isTopColliding() && dy < 0)
-            dy = 0;
-        if(isBottomColliding() && dy > 0)
+        if(isTopColliding() && dy < 0){
             dy = 0; 
+            stop.loop(1); 
+        }
+        if(isBottomColliding() && dy > 0){
+            dy = 0; 
+            stop.loop(1); 
+        }
     }
     
     

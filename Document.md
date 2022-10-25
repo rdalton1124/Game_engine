@@ -1,4 +1,5 @@
 #Test_Sprite
+
 ##Notes
 - If an image is not specified the sprite will just be a rectangle. If a color is not specified for the rectangle, the rectangle will be red. 
 
@@ -20,6 +21,7 @@
 - img: an image. Optional. 
 
 ##Methods
+
 ###update
 - Called by the scene's update function. Will update velocity and location, then check boudnaries. 
 ###getImage
@@ -52,6 +54,7 @@
 - addDX, addDY: Add the passed value to the current dx or dy. 
 
 #Test_Sprite_Junior
+
 ##Notes
 - An updated child of the Test_Sprite. Added functionality includes collision sounds and the ability to set different bound actions for top/bottom and left/right
 ##Variables

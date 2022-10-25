@@ -24,29 +24,40 @@
 
 ###update
 - Called by the scene's update function. Will update velocity and location, then check boudnaries. 
+
 ###getImage
 - Returns the image
+
 ###hasImage
  - returns true if using an image.
+
 ###SetBoundAction
  - Sets bound action of the sprite. Takes one of the aforementioned bound actions. They are static so you can do it as setBoundAction(Test_Sprite.SLIDE)
  - If you enter an invalid number, this method will just do nothing. 
+
 ###collidesWith
 - Pass another sprite to this and it will return a boolean describing whether the sprite is colliding with the other sprite. 
+
 ###ShowStatus
  - Just prints the current status of the sprite to a console. This includes location, velocity and size. 
+
 ###SetSpeedRTheta
  - Set velocity using a magnitude and angle. 
  - Angle is in degrees, but follows the same pattern as radians. I.E. 0 is directly right, 90 is directly up, 180 is directly left and 270 is directly down. 
+
 ###SetSpeedXY
 - Just sets dx and dy equal to the values passed. 
+
 ###CheckBoundaries
 - Checks to see if sprite has hit a wall and reacts accordingly.
+
 ###Boundary checkers
 - isTopColliding, isBottomColliding, isLeftColliding, isRightColliding
 - Returns a boolean describing whether the sprite is colliding with the specified wall. 
+
 ###hide and show
 - used to set visibility of the sprite. 
+
 ###Getters and setters
 - getX, getY: Get the x and y components of locatoin
 - getHeight, getWidth: Get the height and width
@@ -57,12 +68,15 @@
 
 ##Notes
 - An updated child of the Test_Sprite. Added functionality includes collision sounds and the ability to set different bound actions for top/bottom and left/right
+
 ##Variables
 - xBoundAction: Bound action for top and bottom walls
 - yBoundAction: Bound action for left and right walls
 - bounce, wrap, die: The sound files for bouncing, wrapping, or dying. 
+
 ##Constructors
 - The constructors all call the corresponding Test_Sprite constructor
+
 ##Methods
 - setSound: Tries to set a sound. Takes a clip and an int specifying which sound you want to set. Use the same static ints you use to set bound action to tell if what sound you want to set. 
 - setXBoundAction, setYBoundAction: sets the specified bound action
@@ -70,28 +84,37 @@
 - checkBoundaries: Does the same thing as before, but now considers top/bottom and left/right separately. 
 
 #Player_Sprite
+
 ##Notes
 - Player Sprite is a keylistener. Have to scene.addKeyListener(sprite) for each player object.  
 - From my testing, everything seems to work fine with multiple players. 
+
 ##Variables
 - maxDX, maxDY: a maximum value for dx and dy. As a side effect of doing it this way, sprites can travel faster diagonally than they can orthogonally. They're both 15 right now. 
 - keysDown: An arrayList of integers reperesenting the keys which are currently being held down. 
 - up, down, left, right: These are integers which reperesent the keys assigned to movement. 
+
 ##Constructors
 - (scene): Calls parent's (scene) constructor and sets dx, dy, ddx and ddy all equal to 0. 
 - (scene, color, width, height, x, y): Calls parent constructor then sets dx, dy, ddx and ddy all equal to 0. 
 - (scene imgpath, width, height): Attempts to load imgPath and creates a red rectangle if it can't be loaded. Moves sprite to center. 
+
 ##Methods
+
 ###setControls
 - Sets up, left, down and right. Can pass it 4 integers representing the keys for the controls.
 - Can also pass it Player_Sprite.WASD or Player_Sprite.IJKL to quickly set the values to WASD or IJKL. 
+
 ###update
 - Checks to see if one of the movement keys is pressed, and adjusts dx and dy accordingly. 
 - Then it just calls the parent's update function. 
+
 ###keyPressed
 - Called when you press a key. Adds the pressed key to keysDown
+
 ###keyTyped 
-- Does nothing. 
+- Does nothing.
+-  
 ###keyReleased
 - Called when a key is released. Removes the key from keysDown
 - If released key is one of the movement keys, it sets the velocity for that axis to 0. 
@@ -107,14 +130,17 @@
  - Canvas: A canvas to draw on. Not really used by the user
  - bg: A background color
  - sprites: an arraylist of all sprites
+ - 
 ##Functions
 
 ###start
 - creates the canvas and sets up the window. Ideally called after adding all the sprites
 ###update
 - Repaints the canvas and calls the update functions of all the sprites
+- 
 ###Add sprite
 -Takes a sprite and adds it to the arraylist
+
 ###getters and setters
 -getHeight, getWidth: gets the height and with
 -getBgColor: gets the background color

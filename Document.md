@@ -101,12 +101,14 @@
  - This didn't work well because Java doesn't support 2 keyListeners well, so I redid everything regarding controls. 
 
 #Test_Scene
+
 ##Variables
  - width, height: Width and height of the window
  - Canvas: A canvas to draw on. Not really used by the user
  - bg: A background color
  - sprites: an arraylist of all sprites
 ##Functions
+
 ###start
 - creates the canvas and sets up the window. Ideally called after adding all the sprites
 ###update

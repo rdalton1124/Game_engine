@@ -6,15 +6,15 @@ import java.awt.*;
 import java.io.*; 
 import javax.sound.sampled.*; 
 
-public class Pong_Ball extends Test_Sprite_Junior{
+public class Pong_Ball extends Sprite_Junior{
     
     
-    public Pong_Ball(Test_Scene scene) {
+    public Pong_Ball(Scene scene) {
         super(scene);
         xBoundAction = RESPAWN; 
         yBoundAction = BOUNCE; 
     }
-    public Pong_Ball(Test_Scene scene, Color color, int width, int height, int x, int y) {
+    public Pong_Ball(Scene scene, Color color, int width, int height, int x, int y) {
         super(scene, color, width, height, x, y); 
         xBoundAction = RESPAWN; 
         yBoundAction = BOUNCE; 

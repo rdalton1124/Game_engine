@@ -5,10 +5,10 @@ import java.awt.Color;
 
 public class Pong_Player_Sprite extends Player_Sprite{
     
-    public Pong_Player_Sprite (Test_Scene scene) { 
+    public Pong_Player_Sprite (Scene scene) { 
         super(scene); 
     }
-    public Pong_Player_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) {
+    public Pong_Player_Sprite(Scene scene, Color color, int width, int height, int x, int y) {
         super(scene, color, width, height, x, y); 
     }
     

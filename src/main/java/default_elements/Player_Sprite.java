@@ -3,7 +3,7 @@ package default_elements;
 import java.awt.event.*; 
 import java.awt.*; 
 import java.util.*; 
-public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
+public class Player_Sprite extends Sprite_Junior implements KeyListener{
     
     //this method works well enough but as a side effect, you can
     //go significantly faster moving diagonally. Fix later. 
@@ -13,21 +13,21 @@ public class Player_Sprite extends Test_Sprite_Junior implements KeyListener{
     protected int up, left, down, right; 
     public final static int WASD = 1, IJKL = 2; 
     
-    public Player_Sprite(Test_Scene scene) {
+    public Player_Sprite(Scene scene) {
         super(scene);
         dx = 0;
         dy = 0; 
         ddx = 0; 
         ddy = 0; 
     }
-    public Player_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) {
+    public Player_Sprite(Scene scene, Color color, int width, int height, int x, int y) {
         super(scene, color, width, height, x, y); 
         dx = 0; 
         dy = 0; 
         ddx = 0; 
         ddy = 0; 
     }
-    public Player_Sprite(Test_Scene scene, String imgPath, int width, int height) {
+    public Player_Sprite(Scene scene, String imgPath, int width, int height) {
         super(scene, imgPath, width, height);
         
         //put in center

@@ -4,25 +4,25 @@ import javax.swing.*;
 import java.awt.*; 
 import java.util.*; 
 
-public class Test_Scene extends JFrame {
+public class Scene extends JFrame {
     private Canvas canvas; 
     private int width, height; 
     private Color bg; 
     
     private String title = ""; 
-    public ArrayList<Test_Sprite> sprites; 
+    public ArrayList<Sprite> sprites; 
     
-    Test_Scene(Test_Scene scene) {
+    public Scene(Scene scene) {
         this.width = scene.width;
         this.height = scene.height; 
         this.bg = scene.bg; 
-        this.sprites = new ArrayList<Test_Sprite>(scene.sprites);
+        this.sprites = new ArrayList<Sprite>(scene.sprites);
     }
-    public Test_Scene(int width, int height, Color bg) {
+    public Scene(int width, int height, Color bg) {
         this.bg = bg; 
         this.width = width;
         this.height = height; 
-        this.sprites = new ArrayList<Test_Sprite>(); 
+        this.sprites = new ArrayList<Sprite>(); 
     }
     
    
@@ -50,7 +50,7 @@ public class Test_Scene extends JFrame {
     }
     
     
-    public void addSprite(Test_Sprite sprite) {
+    public void addSprite(Sprite sprite) {
         sprites.add(sprite); 
     }
     public void setName(String t) {
@@ -67,9 +67,9 @@ public class Test_Scene extends JFrame {
 class Canvas extends JPanel { 
     private int sceneWidth, sceneHeight; 
     private Color sceneColor;
-    private Test_Scene scn; 
+    private Scene scn; 
     
-    public Canvas(Test_Scene scn) {
+    public Canvas(Scene scn) {
         super(true);
         this.scn = scn; 
     }

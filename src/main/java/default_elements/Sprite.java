@@ -7,7 +7,7 @@ import javax.imageio.*;
 import javax.swing.*; 
 import java.util.*; 
 
-public class Test_Sprite extends JComponent{
+public class Sprite extends JComponent{
     protected int x, y; 
     protected int dx, dy; 
     protected int ddx, ddy; 
@@ -24,11 +24,11 @@ public class Test_Sprite extends JComponent{
     
     public static final int BOUNCE = 1, WRAP = 2, DIE = 3, SLIDE = 4, STOP = 5, KEEP_GOING = 6, RESPAWN = 7; 
     
-    public Test_Sprite(Test_Scene scene) {
+    public Sprite(Scene scene) {
         //set everything to a default value 
         this(scene, Color.RED, 50, 50, ((scene.getWidth() / 2) - 25), ((scene.getWidth() / 2) - 25)); 
     }
-    public Test_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y) { 
+    public Sprite(Scene scene, Color color, int width, int height, int x, int y) { 
         this.width = width; 
         this.height = height; 
         this.color = color; 
@@ -40,10 +40,10 @@ public class Test_Sprite extends JComponent{
         this.x = x;  
         this.y = y; 
     }
-    public Test_Sprite(Test_Scene scene, String imgPath, int width, int height) { 
+    public Sprite(Scene scene, String imgPath, int width, int height) { 
         this(scene, imgPath, width, height, 0, 0); //set to top left corner. 
     }
-    public Test_Sprite(Test_Scene scene, String imgPath, int width, int height, int x, int y) {
+    public Sprite(Scene scene, String imgPath, int width, int height, int x, int y) {
         this.width = width; 
         this.height = height; 
         this.x = x; 
@@ -81,7 +81,7 @@ public class Test_Sprite extends JComponent{
             boundAction = ba; 
     }
     
-    public boolean collidesWith(Test_Sprite other)  {
+    public boolean collidesWith(Sprite other)  {
         if(x > other.x + other.width || //my left side is to your right
                 x + width < other.x) //my right side is to your left
             return false; 

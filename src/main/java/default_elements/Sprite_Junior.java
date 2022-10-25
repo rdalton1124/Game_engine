@@ -11,22 +11,21 @@ import javax.sound.sampled.spi.*;
     Now included is the ability to play sounds on collision,
     the ability to have different bound actions for different walls, 
     the ability to do some third thing I haven't come up with yet, and much, much more!
-
     Next time you're in the market for a Test_Sprite, consider picking up a Test_Sprite_Junior
 */
 
-public class Test_Sprite_Junior extends Test_Sprite {
+public class Sprite_Junior extends Sprite {
     protected int xBoundAction, yBoundAction; 
     protected Clip bounce, wrap, die, slide, stop, respawn;  
     protected AudioInputStream ais; 
     
-    public Test_Sprite_Junior(Test_Scene scene) {
+    public Sprite_Junior(Scene scene) {
         super(scene);
     }
-    public Test_Sprite_Junior(Test_Scene scene, Color color, int width, int height, int x, int y) {
+    public Sprite_Junior(Scene scene, Color color, int width, int height, int x, int y) {
         super(scene, color, width, height, x, y); 
     }
-    public Test_Sprite_Junior(Test_Scene scene, String imgPath, int width, int height) {
+    public Sprite_Junior(Scene scene, String imgPath, int width, int height) {
         super(scene, imgPath, width, height); 
     }
     

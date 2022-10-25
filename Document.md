@@ -123,6 +123,39 @@
  - This is a depracated class. I initally had the player controls hardcoded in and needed to make a new class to support IJKL for player 2
  - This didn't work well because Java doesn't support 2 keyListeners well, so I redid everything regarding controls. 
 
+#Pong_Ball
+
+##Notes
+- a pong-specific class, made for the pong ball. 
+
+##Variables
+- Pong_Ball has no variables specific to itself. 
+- xBoundAction and yBoundAction are pre-set to RESPAWN and BOUNCE, respectively. These cannot be changed. 
+
+##Constructors
+- (scene): Calls parent constructor and sets bound actions
+- (scene, color, width, height, x, y): Calls parent constructor and sets bound actions. 
+
+##Methods
+- the set bound action methods have all been modified to do nothing. This is to prevent the user from inadvertently changing them. 
+- bounce: called when ball is hit by a paddle. It multiplies dx by -1.1 so that the ball changes direction and speeds up a bit. 
+
+#Pong_Player_Sprite
+
+##Notes
+- A pong-specific sprite. It's basically a player_sprite with horizontal movement removed. 
+
+##Variables
+- pong_player_sprite has no variables specific to itself 
+
+##Constructors
+- (scene): Calls parent constructor
+- (scene, color, width, height, x, y): Calls parent constructor 
+
+##Methods 
+- update: moves vertically
+- checkBoundaries: Checks to see if player has hit the top or bottom wall. If it has hit the top wall, prevents upward movement and prevents downward movement if it has hit the bottom wall. 
+
 #Test_Scene
 
 ##Variables
@@ -131,7 +164,7 @@
  - bg: A background color
  - sprites: an arraylist of all sprites
  - 
-##Functions
+##Methods
 
 ###start
 - creates the canvas and sets up the window. Ideally called after adding all the sprites
@@ -148,3 +181,8 @@
 
 #Canvas
 -Not really used by the user. Is what actually draws everything to the window. Is repainted in the scene's update function 
+
+
+#General Notes
+
+- Pong_Test is the file that runs the game. 

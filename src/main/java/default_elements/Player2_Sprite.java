@@ -9,13 +9,13 @@ import java.awt.event.*;
 
 public class Player2_Sprite extends Player_Sprite{
     
-    public Player2_Sprite(Test_Scene scene){
+    public Player2_Sprite(Scene scene){
         super(scene); 
     }
-    public Player2_Sprite(Test_Scene scene, Color color, int width, int height, int x, int y){
+    public Player2_Sprite(Scene scene, Color color, int width, int height, int x, int y){
         super(scene, color, width, height, x, y); 
     }
-    public Player2_Sprite(Test_Scene scene, String imgPath, int width, int height) {
+    public Player2_Sprite(Scene scene, String imgPath, int width, int height) {
         super(scene, imgPath, width, height); 
     }
     @Override

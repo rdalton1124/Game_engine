@@ -120,6 +120,14 @@ public class Sprite extends JComponent{
     public int getHeight() {return height;} 
     public Color getColor() {return color;} 
     
+    public int getR() { 
+        return (int) Math.ceil(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)));
+    }
+    public int getTheta() { 
+        double rad = Math.atan2(dx, dy); 
+        return (int) Math.round((180 * rad) / Math.PI); 
+    }
+    
     public void addDX(int ndx) {dx += ndx;}
     public void addDY(int ndy)  {dy += ndy;}
     
@@ -165,24 +173,23 @@ public class Sprite extends JComponent{
                 }
             }
             case DIE -> {
+                 ddx = 0;
+                 ddy = 0;
+                 dx = 0; 
+                 dy = 0; 
             }
             case SLIDE -> {
                 if(isTopColliding() || isBottomColliding()) {
-                    ddy = 0;
+                     ddy = 0;
                     dy = 0;
-                }   if(isLeftColliding() || isRightColliding()) {
+                   }   
+                if(isLeftColliding() || isRightColliding()) {
                     ddx = 0;
                     dx = 0;
                 }
             }
             case STOP -> {
-                if(isTopColliding() || isBottomColliding() ||
-                        isLeftColliding() || isRightColliding()) {
-                    ddx = 0;
-                    ddy = 0;
-                    dx = 0;
-                    dy = 0;
-                }
+                
             }
             case RESPAWN -> {
                 x = rand.nextInt(sceneWidth - width); 

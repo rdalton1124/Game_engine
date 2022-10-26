@@ -3,15 +3,10 @@ package default_elements;
 import java.awt.*; 
 import java.io.*;
 import javax.sound.sampled.*; 
-import javax.sound.sampled.spi.*; 
-
 /*
-    The proud prince of the Test_Sprite dynasty, Test_Sprite_Junior includes
-    all of Test_Sprite's features and MORE!
-    Now included is the ability to play sounds on collision,
-    the ability to have different bound actions for different walls, 
-    the ability to do some third thing I haven't come up with yet, and much, much more!
-    Next time you're in the market for a Test_Sprite, consider picking up a Test_Sprite_Junior
+    An updated version of the sprite class
+    It supports different boundActions for top/bottom and left/right walls 
+    It also supports sound for bumping into wall 
 */
 
 public class Sprite_Junior extends Sprite {

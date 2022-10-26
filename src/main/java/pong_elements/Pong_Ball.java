@@ -26,6 +26,18 @@ public class Pong_Ball extends Sprite_Junior{
     public void setYBoundAction(int ya){}
     
     public void bounce() {
-        dx = (int) Math.ceil(dx * -1.1); //speed up
+        dx *= -1.1; //speed up
+        dy += rand.nextInt(4) - 1; 
+    }
+    public boolean collidesWith(Pong_Player_Sprite sprt) {
+        if(x + dx > sprt.getX() + sprt.getWidth() || //my left side is to your right
+                x + width < sprt.getX()) //my right side is to your left
+            return false; 
+        else if (y > sprt.getY() + sprt.getHeight() || //my top side is below your bottom
+                y + height < sprt.getY())  //my bottom side is above your top
+            return false;
+        else
+            return true; 
+        
     }
 }

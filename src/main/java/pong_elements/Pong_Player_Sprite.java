@@ -40,5 +40,11 @@ public class Pong_Player_Sprite extends Player_Sprite{
         }
     }
     
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y; 
+    }
     
 }

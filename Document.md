@@ -1,4 +1,4 @@
-#Test_Sprite
+#Sprite
 
 ##Notes
 - If an image is not specified the sprite will just be a rectangle. If a color is not specified for the rectangle, the rectangle will be red. 
@@ -15,10 +15,19 @@
 - dx, dy: velocity. Measured in pixels/frame
 - ddx, ddy: if you wish you can set an acceleration
 - SceneHeight, SceneWidth: The size of the scene. Cannot be directly changed and is set when the scene is passed to the sprite constructor. Used to check boundaries
-- visible: is sprite visible?
-- BoundAction: Controls what happens when the sprite hits a wall. Options are BOUNCE, WRAP, DIE, SLIDE, STOP, and KEEP_GOING. Default is BOUNCE
+- visible: is sprite visible? Currently does not affect anything. 
 - Color: The color. Used if your sprite is just a rectangle 
 - img: an image. Optional. 
+- BoundAction: Controls what happens when the sprite hits a wall. Options are BOUNCE, WRAP, DIE, SLIDE, STOP, KEEP_GOING, and RESAPWN. Default is BOUNCE
+
+###Bound Actions 
+- Bounce: Negates dx if hitting left or right wall and negates dy if hitting top or bottom. It's a flat-out negation, there's no speed loss
+- Wrap: Goes to the opposite wall. There is no speed loss
+- Die: 
+- Slide: sets dx to 0 if hitting a left or right wall. Sets dy to 0 if hitting a top or bottom wall. The other speed element is not affected. 
+- Stop: dx, dy, ddx and ddy are all set to 0. This causes a bit of problems if you want to move the stopped sprite again, since it's still registered as hitting the wall. I'm gonna change it to move the sprite down a pixel if it collides
+- Keep going: 
+- Respawn: Sprite is put in a random location, moving at a random directon. The velocity is kept relatively stable compared to where it was before. 
 
 ##Methods
 
@@ -37,6 +46,7 @@
 
 ###collidesWith
 - Pass another sprite to this and it will return a boolean describing whether the sprite is colliding with the other sprite. 
+- Uses AABB Collision detection. 
 
 ###ShowStatus
  - Just prints the current status of the sprite to a console. This includes location, velocity and size. 
@@ -57,14 +67,17 @@
 
 ###hide and show
 - used to set visibility of the sprite. 
+- This is functionally useless, since my engine doesn't currently test for visibility  
 
 ###Getters and setters
 - getX, getY: Get the x and y components of locatoin
 - getHeight, getWidth: Get the height and width
 - getColor: Get the color. 
 - addDX, addDY: Add the passed value to the current dx or dy. 
+- getR: Gets the radius (aka velocity) of the sprite
+- getTheta: Gets the angle that the sprite is currently travelling in. Kind of buggy at the momment. 
 
-#Test_Sprite_Junior
+#Sprite_Junior
 
 ##Notes
 - An updated child of the Test_Sprite. Added functionality includes collision sounds and the ability to set different bound actions for top/bottom and left/right
@@ -138,7 +151,10 @@
 
 ##Methods
 - the set bound action methods have all been modified to do nothing. This is to prevent the user from inadvertently changing them. 
-- bounce: called when ball is hit by a paddle. It multiplies dx by -1.1 so that the ball changes direction and speeds up a bit. 
+
+###Bounce
+- Called when the ball collides with a paddle. 
+- Reverses the dx and randomly adds or subtracts a small amount from the dy so that the angle of the ball is not as predictable. 
 
 #Pong_Player_Sprite
 
@@ -156,7 +172,7 @@
 - update: moves vertically
 - checkBoundaries: Checks to see if player has hit the top or bottom wall. If it has hit the top wall, prevents upward movement and prevents downward movement if it has hit the bottom wall. 
 
-#Test_Scene
+#Scene
 
 ##Variables
  - width, height: Width and height of the window

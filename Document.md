@@ -1,3 +1,24 @@
+#General Notes
+
+##How to run
+- The main method is in pong_test. 
+- I will try to get a .jar executable uploaded within the next few days. I tested it out in the IDE. 
+
+##How to play
+- It's just pong. You use W and D to move the left paddle, and I and K to move the right paddle. 
+- There's no real score system or anything. 
+
+##Problems 
+- The ball would benefit from a max speed. It speeds up every time it hits a paddle and very quickly gets too fast keep track of. The collision also sometimes fails due to this. The collision also snags sometimes when it's too fast.
+- Sometimes when the ball respawns, it's moving completely vertically and it'll get stuck forever. 
+- The pong ball has no regard for what side of the paddle it hits, so it will react the same way if it hits the back of the paddle as if it hits the front. This looks unnatural. 
+- It sometimes lags and I'm not sure why.
+
+##Other notes
+- Default elements package contains generic elements for the game engine itself. 
+- Pong elements package continas the pong_Ball and pong_player_sprite. 
+- Timing is taken care of in the pong test. 
+
 #Sprite
 
 ##Notes
@@ -198,7 +219,3 @@
 #Canvas
 -Not really used by the user. Is what actually draws everything to the window. Is repainted in the scene's update function 
 
-
-#General Notes
-
-- Pong_Test is the file that runs the game. 

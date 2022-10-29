@@ -18,6 +18,8 @@
 - Default elements package contains generic elements for the game engine itself. 
 - Pong elements package continas the pong_Ball and pong_player_sprite. 
 - Timing is taken care of in the pong test. 
+- I put the whole netbeans project onto the github. The source files are in src/main/java
+- sounds contains sounds and img contains some images I used in testing. None of the images are needed for the final project but the click.wav, harsh_bump1.wav and respawn.wav are all used. The code uses a relative path so there shouldn't be too much trouble, but I'll still get an executable uploaded ASAP in case of problems. 
 
 #Sprite
 

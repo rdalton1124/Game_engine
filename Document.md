@@ -2,7 +2,7 @@
 
 ##How to run
 - The main method is in pong_test. 
-- I will try to get a .jar executable uploaded within the next few days. I tested it out in the IDE. 
+- I'm having problems with the way the sound files are set up. For now, I've uploaded an executable jar without any sound. 
 
 ##How to play
 - It's just pong. You use W and D to move the left paddle, and I and K to move the right paddle. 
